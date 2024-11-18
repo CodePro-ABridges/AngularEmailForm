@@ -27,7 +27,6 @@ Template Structure:
         <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">
           Sign Up
         </h2>
-
         <form [formGroup]="emailForm" (ngSubmit)="onSubmit()" class="space-y-4">
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700"
@@ -40,8 +39,6 @@ Template Structure:
               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 border"
               [class.border-red-500]="isFieldInvalid('email')"
             />
-
-            <!-- Error Messages -->
             <div
               *ngIf="isFieldInvalid('email')"
               class="mt-1 text-sm text-red-500"
@@ -54,21 +51,35 @@ Template Structure:
               </span>
             </div>
           </div>
-
           <button
             type="submit"
-            class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+            [ngClass]="{
+              'bg-blue-500 hover:bg-blue-600': !isSubmitted,
+              'bg-green-500 hover:bg-green-600': isSubmitted
+            }"
+            class="w-full text-white p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors"
+            [class.focus:ring-blue-500]="!isSubmitted"
+            [class.focus:ring-green-500]="isSubmitted"
             [disabled]="emailForm.invalid"
             [class.opacity-50]="emailForm.invalid"
           >
-            Submit
+            {{ isSubmitted ? 'Submitted Successfully!' : 'Submit' }}
+          </button>
+
+          <!-- Optional: Add a reset button to demonstrate state change back -->
+          <button
+            *ngIf="isSubmitted"
+            type="button"
+            (click)="resetForm()"
+            class="w-full mt-2 bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+          >
+            Submit Another
           </button>
         </form>
       </div>
     </div>
   `,
 })
-
 /*
   Class Structure:
     Properties:
@@ -91,6 +102,7 @@ Template Structure:
  */
 export class EmailFormComponent {
   emailForm: FormGroup;
+  isSubmitted: boolean = false;
 
   constructor(private fb: FormBuilder) {
     this.emailForm = this.fb.group({
@@ -106,8 +118,13 @@ export class EmailFormComponent {
     if (this.emailForm.valid) {
       console.log('Form submitted:', this.emailForm.value);
       alert('Form submitted successfully!');
-      this.emailForm.reset();
+      this.isSubmitted = true;
     }
+  }
+
+  resetForm(): void {
+    this.isSubmitted = false;
+    this.emailForm.reset();
   }
 }
 /*
