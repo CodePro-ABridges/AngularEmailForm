@@ -10,6 +10,10 @@ A simple email form application built with Angular 17 demonstrating form validat
 - Responsive design with Tailwind CSS
 - TypeScript integration
 
+## Deployed App
+
+Here: https://aesthetic-croquembouche-d7b41c.netlify.app/
+
 ## Prerequisites
 
 - Node.js (v14 or higher)
