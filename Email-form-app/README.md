@@ -1,27 +1,59 @@
-# EmailFormApp
+# Angular Email Form Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
+A simple email form application built with Angular 17 demonstrating form validation, state management, and styling with Tailwind CSS.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Email validation
+- Real-time error messaging
+- State management for form submission
+- Responsive design with Tailwind CSS
+- TypeScript integration
 
-## Code scaffolding
+## Prerequisites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/CodePro-ABridges/AngularEmailForm
+
+# Install dependencies
+npm install
+
+# Install Tailwind CSS
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+```
+
+## Development Server
+
+```bash
+ng serve
+```
+
+Navigate to `http://localhost:4200/`
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+# Production build
+ng build
 
-## Running unit tests
+# Development build
+ng build --configuration=development
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Technologies Used
 
-## Running end-to-end tests
+- Angular 17
+- TypeScript
+- Tailwind CSS
+- RxJS
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## License
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+MIT
